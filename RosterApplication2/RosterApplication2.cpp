@@ -6,7 +6,13 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello World!\n";
+    string userInput = "";
+    cout << "Menu" << endl;
+    cout << "q: Quit" << endl;
+
+    while (userInput != "q") {
+        cin >> userInput;
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
