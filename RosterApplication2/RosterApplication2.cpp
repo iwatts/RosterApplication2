@@ -21,7 +21,7 @@ int main()
 	roster newRoster;
 
 	cout << "Commands" << endl;
-	cout << "q: Quit\tp: Print All\ta: Add Student Wizard\tr: Remove Student Wizard" << endl;
+	cout << "q: Quit\tp: Print All\ta: Add Student\tr: Remove Student" << endl;
 
 	while (userInput != "q") {
 		cin >> userInput;
@@ -40,8 +40,12 @@ int main()
 			newRoster.remove(userInput);
 			recognizedInput = true;
 		}
+		if (userInput == "a") {
+			cout << "Student Creation Wizard" << endl;
+			recognizedInput = true;
+		}
 
-		if (!recognizedInput) {
+		if (!recognizedInput && userInput != "q") {
 			cout << "Input not recognized, please refer to the Commands for valid inputs" << endl;
 		}
 	}
