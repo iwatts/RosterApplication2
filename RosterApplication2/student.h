@@ -8,18 +8,15 @@ class student
 {
 public:
 	void getStudentByID(string studentID) {}
+	void removeStudentByID(string studentID) {}
+	void setStudent() {}
 
-	void setStudentFirstName() {}
-	void setStudentLastName() {}
-	void setStudentEmail() {}
-	void setStudentAge() {}
 private:
 	string studentID;
 	string firstName;
 	string lastName;
 	string emailAddress;
 	string age;
-	int courseDays[3];
-	DegreeProgram degree;
+	enum DegreeProgram degree;
 };
 
