@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 #include "roster.h"
@@ -13,18 +14,20 @@ void roster::printAll() {
 void roster::printStudent(string studentID) {
 
 }
-void roster::addStudent(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, enum DegreeProgram degreeprogram) {
+void roster::addStudent(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, string degreeprogram) {
 	//generated ID, the rest is from the user
+	// add the new student to the studentsInRoster vector
 	student* newStudent = new student;
-	studentsInRoster;
+
+	// studentsInRoster.push_back(newStudent);
 }
 void roster::remove(string studentID) {
 	cout << "Removing: " << studentID << endl;
 }
 void roster::printAverageDaysInCourse(string studentID) {}
-void roster::printByDegreeProgram(enum DegreeProgram degreeprogram) {}
+void roster::printByDegreeProgram(DegreeProgram degreeprogram) {}
 void roster::printInvalidEmails() {
-	cout << "print invalid emails" << endl;
+	cout << "Print invalid emails" << endl;
 	return;
 }
 

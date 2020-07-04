@@ -8,8 +8,9 @@ class student
 {
 public:
 	void getStudentByID(string studentID) {}
+	void setStudentByID(string studentID) {}
 	void removeStudentByID(string studentID) {}
-	void setStudent() {}
+	void print(string studentID) {}
 
 private:
 	string studentID;
@@ -17,6 +18,6 @@ private:
 	string lastName;
 	string emailAddress;
 	string age;
-	enum DegreeProgram degree;
+	// enum DegreeProgram degree;
 };
 

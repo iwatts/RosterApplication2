@@ -12,15 +12,15 @@ class roster
 public:
 	void printAll();
 	void printStudent(string studentID);
-	void addStudent(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, enum DegreeProgram degreeprogram);
+	void addStudent(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, string degreeprogram);
 	void remove(string studentID);
 	void printAverageDaysInCourse(string studentID);
 	void printByDegreeProgram(DegreeProgram degreeprogram);
 	void printInvalidEmails();
+	vector<student> studentsInRoster;
 	roster();
 
 private:
-	vector<student> studentsInRoster;
 	student newStudent;
 };
 
