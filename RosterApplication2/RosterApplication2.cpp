@@ -9,9 +9,9 @@ using namespace std;
 int main()
 {
 	string userInput = "";
+	Roster classRoster;
 	bool recognizedInput;
-	roster classRoster;
-	int i;
+	int i = 0;
 	const string studentData[] = {
 		"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
 		"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
@@ -27,7 +27,7 @@ int main()
 	while (userInput != "q") {
 		cin >> userInput;
 		recognizedInput = false;
-		for (int i = 0; i < userInput.length(); i++) {
+		for (i = 0; i < userInput.length(); i++) {
 			if (isupper(userInput.at(i))) userInput.at(i) = tolower(userInput.at(i));
 		}
 

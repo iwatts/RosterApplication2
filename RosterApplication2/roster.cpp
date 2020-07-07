@@ -7,26 +7,24 @@ using namespace std;
 #include "degree.h"
 #include "student.h"
 
-void roster::printAll() {
+void Roster::printAll() {
 	cout << "Print All" << endl;
 	return;
 }
-void roster::printStudent(string studentID) {
+void Roster::printStudent(string studentID) {
 
 }
-void roster::addStudent(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, string degreeprogram) {
+void Roster::addStudent(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, string degreeprogram) {
 	// add the new student to the studentsInRoster vector
-	student* newStudent = new student;
-	// roster::studentsInRoster.push_back(newStudent);
 }
-void roster::remove(string studentID) {
+void Roster::remove(string studentID) {
 	cout << "Removing: " << studentID << endl;
 }
-void roster::printAverageDaysInCourse(string studentID) {}
-void roster::printByDegreeProgram(DegreeProgram degreeprogram) {}
-void roster::printInvalidEmails() {
+void Roster::printAverageDaysInCourse(string studentID) {}
+void Roster::printByDegreeProgram(DegreeProgram degreeprogram) {}
+void Roster::printInvalidEmails() {
 	cout << "Print invalid emails" << endl;
 	return;
 }
 
-roster::roster() {}
+Roster::Roster() {}

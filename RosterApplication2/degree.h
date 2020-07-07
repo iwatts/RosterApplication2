@@ -1,3 +1,8 @@
+#include <string>
+using namespace std;
+
 #pragma once
 
-enum class DegreeProgram { SECURITY, NETWORK, SOFTWARE };
+enum DegreeProgram { SECURITY, NETWORK, SOFTWARE };
+
+static const string degreeProgramStrings[] = { "SECURITY", "NETWORK", "SOFTWARE" }
