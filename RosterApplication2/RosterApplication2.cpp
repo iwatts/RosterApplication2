@@ -43,6 +43,8 @@ int main()
 		}
 		if (userInput == "a") {
 			cout << "Student Creation Wizard Goes Here" << endl;
+			// generate id, get userinput for the rest
+			// classRoster.addStudent();
 			recognizedInput = true;
 		}
 

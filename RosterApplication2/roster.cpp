@@ -15,11 +15,9 @@ void roster::printStudent(string studentID) {
 
 }
 void roster::addStudent(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, string degreeprogram) {
-	//generated ID, the rest is from the user
 	// add the new student to the studentsInRoster vector
 	student* newStudent = new student;
-
-	// studentsInRoster.push_back(newStudent);
+	// roster::studentsInRoster.push_back(newStudent);
 }
 void roster::remove(string studentID) {
 	cout << "Removing: " << studentID << endl;
