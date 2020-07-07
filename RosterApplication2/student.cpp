@@ -49,6 +49,10 @@ void Student::setStudentDegree(DegreeProgram d) {
 	degree = d;
 }
 
+void Student::print() {
+
+}
+
 Student::~Student() {
 
 }

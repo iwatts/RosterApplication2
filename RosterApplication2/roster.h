@@ -9,7 +9,11 @@ using namespace std;
 
 class Roster
 {
+private:
+	Student** students;
 public:
+	Roster();
+
 	void printAll();
 	void printStudent(string studentID);
 	void addStudent(
@@ -27,6 +31,7 @@ public:
 	void printAverageDaysInCourse(string studentID);
 	void printByDegreeProgram(DegreeProgram degreeprogram);
 	void printInvalidEmails();
-	Roster();
+
+	~Roster();
 };
 
