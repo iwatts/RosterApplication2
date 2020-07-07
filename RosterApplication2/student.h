@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
 #include <string>
-; using namespace std;
+using namespace std;
 
 #include "degree.h"
-;
+
 class Student
 {
 protected:
