@@ -26,18 +26,18 @@ public:
 		int daysInCourse1,
 		int daysInCourse2,
 		int daysInCourse3,
-		string degreeprogram
+		DegreeProgram degreeprogram
 	);
 
 	//getters
 	string getStudentID();
+	DegreeProgram getStudentDegree();
 
 	//setters
 	void setStudentID(string studentID);
+	void setStudentDegree(DegreeProgram degree);
 
-	virtual DegreeProgram getDegreeProgram() = 0;
-
-	virtual void print() = 0;
+	void print();
 
 	~Student();
 };
