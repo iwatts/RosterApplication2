@@ -9,15 +9,15 @@ using namespace std;
 
 Roster::Roster() {
 	//studentsInRoster vector - empty
+	this->capacity = 0;
+	this->students = nullptr;
 }
 
 void Roster::printAll() {
 	cout << "Print All" << endl;
 	return;
 }
-void Roster::printStudent(string studentID) {
 
-}
 void Roster::addStudent(
 	string studentID,
 	string firstName,
@@ -31,7 +31,7 @@ void Roster::addStudent(
 ) {
 	// add the new student to the studentsInRoster vector
 }
-void Roster::remove(string studentID) {
+bool Roster::remove(string studentID) {
 	cout << "Removing: " << studentID << endl;
 }
 void Roster::printAverageDaysInCourse(string studentID) {}

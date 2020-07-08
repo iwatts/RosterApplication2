@@ -10,12 +10,16 @@ using namespace std;
 class Roster
 {
 private:
+	int capacity; // need a limit on the number of students
 	Student** students;
 public:
 	Roster();
+	Roster(int capacity);
 
-	void printAll();
-	void printStudent(string studentID);
+	Student* getStudentAt(int index);
+	// parse out the input before adding
+	void parseUserInput(string userData);
+	// only run on successful parsing
 	void addStudent(
 		string studentID,
 		string firstName,
@@ -27,7 +31,10 @@ public:
 		int daysInCourse3,
 		string degreeprogram
 	);
-	void remove(string studentID);
+	bool remove(string studentID);
+
+	// Printing options
+	void printAll();
 	void printAverageDaysInCourse(string studentID);
 	void printByDegreeProgram(DegreeProgram degreeprogram);
 	void printInvalidEmails();
