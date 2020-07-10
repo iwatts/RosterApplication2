@@ -8,7 +8,6 @@ using namespace std;
 #include "student.h"
 
 Roster::Roster() {
-	//students array - empty
 	this->capacity = 0;
 	this->lastIndex = -1;
 	this->students = nullptr;
@@ -30,6 +29,7 @@ void Roster::parseUserInputAndAdd(string userData) {
 
 	if (lastIndex < capacity) {
 		lastIndex++;
+		DegreeProgram degree = UNDECLARED;
 
 		//Get the ID
 		rhs = userData.find(",");
@@ -73,7 +73,16 @@ void Roster::parseUserInputAndAdd(string userData) {
 		//get degreeProgram
 		lhs = rhs + 1;
 		rhs = userData.find(",", lhs);
-		string degreeProgram = userData.substr(lhs, rhs - lhs);
+		string degreeProgramString = userData.substr(lhs, rhs - lhs);
+
+		if (degreeProgramString == "UNDECLARED") degree = UNDECLARED;
+		else if (degreeProgramString == "SECURITY") degree = SECURITY;
+		else if (degreeProgramString == "NETWORK") degree = NETWORK;
+		else if (degreeProgramString == "SOFTWARE")degree = SOFTWARE;
+		else {
+			cerr << "ERROR! Invalid Degree Type";
+			exit(-1);
+		}
 
 		addStudent(
 			studentID,
@@ -84,11 +93,11 @@ void Roster::parseUserInputAndAdd(string userData) {
 			daysInCourse1,
 			daysInCourse2,
 			daysInCourse3,
-			degreeProgram
+			degree
 		);
 	}
 	else {
-		cerr << "ERROR! Student List is full";
+		cerr << "ERROR! Student List is Full";
 		exit(-1);
 	}
 }
@@ -102,7 +111,7 @@ void Roster::addStudent(
 	int daysInCourse1,
 	int daysInCourse2,
 	int daysInCourse3,
-	string degreeProgram
+	DegreeProgram degreeProgram
 ) {
 	// add the new student to the studentsInRoster vector
 }

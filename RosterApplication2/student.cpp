@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include "student.h"
 #include "degree.h"
 
@@ -10,7 +11,10 @@ Student::Student() {
 	this->firstName = "";
 	this->lastName = "";
 	this->emailAddress = "";
-	this->age = "";
+	this->age = 0;
+	this->daysInCourse1 = 0;
+	this->daysInCourse2 = 0;
+	this->daysInCourse3 = 0;
 	this->degree = UNDECLARED;
 }
 
@@ -23,14 +27,17 @@ Student::Student(
 	int daysInCourse1,
 	int daysInCourse2,
 	int daysInCourse3,
-	DegreeProgram degreeprogram
+	DegreeProgram degree
 ) {
 	this->studentID = studentID;
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->emailAddress = emailAddress;
 	this->age = age;
-	this->degree = degreeprogram;
+	this->daysInCourse1 = daysInCourse1;
+	this->daysInCourse2 = daysInCourse2;
+	this->daysInCourse3 = daysInCourse3;
+	this->degree = degree;
 }
 
 //getters
@@ -50,7 +57,10 @@ void Student::setStudentDegree(DegreeProgram d) {
 }
 
 void Student::print() {
-
+	cout << left << setw(5) << studentID;
+	cout << left << setw(10) << firstName;
+	cout << left << setw(10) << lastName;
+	cout << left << setw(10) << emailAddress;
 }
 
 Student::~Student() {

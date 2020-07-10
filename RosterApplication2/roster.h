@@ -31,7 +31,7 @@ public:
 		int daysInCourse1,
 		int daysInCourse2,
 		int daysInCourse3,
-		string degreeprogram
+		DegreeProgram degreeProgram
 	);
 	bool remove(string studentID);
 

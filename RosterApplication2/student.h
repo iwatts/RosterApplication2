@@ -7,12 +7,15 @@ using namespace std;
 
 class Student
 {
-protected:
+private:
 	string studentID;
 	string firstName;
 	string lastName;
 	string emailAddress;
-	string age;
+	int age;
+	int daysInCourse1;
+	int daysInCourse2;
+	int daysInCourse3;
 	DegreeProgram degree;
 
 public:
@@ -26,7 +29,7 @@ public:
 		int daysInCourse1,
 		int daysInCourse2,
 		int daysInCourse3,
-		DegreeProgram degreeprogram
+		DegreeProgram degree
 	);
 
 	//getters

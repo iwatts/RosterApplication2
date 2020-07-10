@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 #include "roster.h"
@@ -30,7 +31,11 @@ int main()
 
 
 	cout << "Commands" << endl;
-	cout << "q: Quit\tp: Print All\ta: Add Student\tr: Remove Student" << endl;
+	cout << left << setw(18) << "q: Quit";
+	cout << left << setw(20) << "p: Print All";
+	cout << left << setw(20) << "a: Add Student";
+	cout << left << setw(20) << "r: Remove Student";
+	cout << endl;
 
 	while (userInput != "q") {
 		cin >> userInput;
