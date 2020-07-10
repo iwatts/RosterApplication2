@@ -58,9 +58,15 @@ void Student::setStudentDegree(DegreeProgram d) {
 
 void Student::print() {
 	cout << left << setw(5) << studentID;
-	cout << left << setw(10) << firstName;
-	cout << left << setw(10) << lastName;
-	cout << left << setw(10) << emailAddress;
+	cout << left << setw(15) << firstName;
+	cout << left << setw(15) << lastName;
+	cout << left << setw(30) << emailAddress;
+	cout << left << setw(5) << age;
+	cout << left << setw(10) << daysInCourse1;
+	cout << left << setw(10) << daysInCourse2;
+	cout << left << setw(10) << daysInCourse3;
+	cout << left << setw(10) << degree;
+	cout << endl;
 }
 
 Student::~Student() {

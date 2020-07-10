@@ -111,9 +111,20 @@ void Roster::addStudent(
 	int daysInCourse1,
 	int daysInCourse2,
 	int daysInCourse3,
-	DegreeProgram degreeProgram
+	DegreeProgram degree
 ) {
-	// add the new student to the studentsInRoster vector
+	// add the new student to the students array
+	students[lastIndex] = new Student(
+		studentID,
+		firstName,
+		lastName,
+		emailAddress,
+		age,
+		daysInCourse1,
+		daysInCourse2,
+		daysInCourse3,
+		degree
+	);
 }
 bool Roster::remove(string studentID) {
 	bool found = false;

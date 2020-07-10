@@ -45,6 +45,16 @@ int main()
 		}
 
 		if (userInput == "p") {
+			cout << left << setw(5) << "ID";
+			cout << left << setw(15) << "First Name";
+			cout << left << setw(15) << "Last Name";
+			cout << left << setw(30) << "Email";
+			cout << left << setw(5) << "Age";
+			cout << left << setw(10) << "Course 1";
+			cout << left << setw(10) << "Course 2";
+			cout << left << setw(10) << "Course 3";
+			cout << left << setw(10) << "Degree";
+			cout << endl;
 			classRoster->printAll();
 			recognizedInput = true;
 		}
