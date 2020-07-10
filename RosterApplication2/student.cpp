@@ -11,7 +11,7 @@ Student::Student() {
 	this->lastName = "";
 	this->emailAddress = "";
 	this->age = "";
-	this->degree = SOFTWARE;
+	this->degree = UNDECLARED;
 }
 
 Student::Student(

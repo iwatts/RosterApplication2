@@ -9,16 +9,24 @@ using namespace std;
 int main()
 {
 	string userInput = "";
-	Roster classRoster;
 	bool recognizedInput;
 	int i = 0;
-	const string studentData[] = {
+	int studentCount = 30;
+	Roster* classRoster = new Roster(studentCount);
+	const string studentData[5] = {
 		"A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
 		"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
 		"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
 		"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-		"A5,[firstname],[lastname],[emailaddress],[age], [numberofdaystocomplete3courses],SOFTWARE"
+		"A5,Isaac,Watts,iwatts@wgu.edu,32,30,30,30,SOFTWARE"
 	};
+	int studentDataDefaultSize = *(&studentData + 1) - studentData;
+
+	cout << "Loading Defaults... [" << studentDataDefaultSize << "]" << endl;
+	for (i = 0; i < studentDataDefaultSize; i++) {
+		classRoster->parseUserInputAndAdd(studentData[i]);
+	}
+	cout << "Loaded" << endl;
 
 
 	cout << "Commands" << endl;
@@ -32,13 +40,13 @@ int main()
 		}
 
 		if (userInput == "p") {
-			classRoster.printAll();
+			classRoster->printAll();
 			recognizedInput = true;
 		}
 		if (userInput == "r") {
 			cout << "Enter ID to remove:" << endl;
 			cin >> userInput;
-			classRoster.remove(userInput);
+			// classRoster->remove(userInput);
 			recognizedInput = true;
 		}
 		if (userInput == "a") {

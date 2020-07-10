@@ -11,14 +11,16 @@ class Roster
 {
 private:
 	int capacity; // need a limit on the number of students
+	int lastIndex;
 	Student** students;
 public:
 	Roster();
 	Roster(int capacity);
 
 	Student* getStudentAt(int index);
+
 	// parse out the input before adding
-	void parseUserInput(string userData);
+	void parseUserInputAndAdd(string userData);
 	// only run on successful parsing
 	void addStudent(
 		string studentID,

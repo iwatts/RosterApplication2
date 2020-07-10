@@ -3,6 +3,6 @@ using namespace std;
 
 #pragma once
 
-enum DegreeProgram { SECURITY, NETWORK, SOFTWARE };
+enum DegreeProgram { UNDECLARED, SECURITY, NETWORK, SOFTWARE };
 
-static const string degreeProgramStrings[] = { "SECURITY", "NETWORK", "SOFTWARE" };
+static const string degreeProgramStrings[] = { "UNDECLARED", "SECURITY", "NETWORK", "SOFTWARE" };
