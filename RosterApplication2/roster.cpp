@@ -161,7 +161,14 @@ void Roster::printAll() {
 }
 
 void Roster::printAverageDaysInCourse(string studentID) {}
-void Roster::printByDegreeProgram(DegreeProgram degreeprogram) {}
+
+void Roster::printByDegreeProgram(DegreeProgram degreeprogram) {
+	for (int i = 0; i <= this->lastIndex; i++) {
+		if (this->students[i]->getStudentDegree() == degreeprogram) {
+			this->students[i]->print();
+		}
+	}
+}
 void Roster::printInvalidEmails() {
 	cout << "Print invalid emails" << endl;
 	return;

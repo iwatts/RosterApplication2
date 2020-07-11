@@ -34,10 +34,12 @@ public:
 
 	//getters
 	string getStudentID();
+	string getStudentEmail();
 	DegreeProgram getStudentDegree();
 
 	//setters
 	void setStudentID(string studentID);
+	void setStudentEmail(string email);
 	void setStudentDegree(DegreeProgram degree);
 
 	void print();

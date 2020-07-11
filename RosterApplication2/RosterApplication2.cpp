@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
 	string userInput = "";
+	DegreeProgram degree = UNDECLARED;
 	bool recognizedInput;
 	int i = 0;
 	int studentCount = 30;
@@ -32,9 +33,10 @@ int main()
 
 	cout << "Commands" << endl;
 	cout << left << setw(18) << "q: Quit";
-	cout << left << setw(20) << "p: Print All";
+	cout << left << setw(20) << "p: Print Options";
 	cout << left << setw(20) << "a: Add Student";
 	cout << left << setw(20) << "r: Remove Student";
+	cout << left << setw(20) << "h: Commands";
 	cout << endl;
 
 	while (userInput != "q") {
@@ -45,10 +47,34 @@ int main()
 		}
 
 		if (userInput == "p") {
-			classRoster->printAll();
+			cout << left << setw(18) << "s: All Students";
+			cout << left << setw(20) << "d: By Degree";
+			cout << left << setw(20) << "e: Invalid Emails";
+			cout << left << setw(20) << "c: Average Course Days";
+			cout << endl;
+			cin >> userInput;
+			if (userInput == "s") classRoster->printAll();
+			else if (userInput == "d") {
+				cout << "Enter a Degree Type (UNDECLARED/SECURITY/NETWORK/SOFTWARE): ";
+				cin >> userInput;
+				for (int y = 0; y < userInput.length(); y++) {
+					if (islower(userInput.at(y))) userInput.at(y) = toupper(userInput.at(y));
+				}
+				if (userInput == "UNDECLARED") degree = UNDECLARED;
+				else if (userInput == "SECURITY") degree = SECURITY;
+				else if (userInput == "NETWORK") degree = NETWORK;
+				else if (userInput == "SOFTWARE")degree = SOFTWARE;
+				else {
+					cerr << "ERROR! Invalid Degree Type";
+					exit(-1);
+				}
+
+			}
+			classRoster->printByDegreeProgram(degree);
 			recognizedInput = true;
+			userInput = "h";
 		}
-		if (userInput == "r") {
+		else if (userInput == "r") {
 			cout << "Enter ID to remove: ";
 			cin >> userInput;
 			for (i = 0; i < userInput.length(); i++) {
@@ -58,12 +84,23 @@ int main()
 			else cout << userInput << ": Student ID Not Found" << endl;
 			recognizedInput = true;
 		}
-		if (userInput == "a") {
+		else if (userInput == "a") {
 			cout << "Student Data: ";
 			// generate id, get userinput for the rest
 			cin >> userInput;
 			classRoster->parseUserInputAndAdd(userInput);
 			cout << "Student Added" << endl;
+			recognizedInput = true;
+		}
+
+		if (userInput == "h") {
+			cout << "Commands" << endl;
+			cout << left << setw(18) << "q: Quit";
+			cout << left << setw(20) << "p: Print Options";
+			cout << left << setw(20) << "a: Add Student";
+			cout << left << setw(20) << "r: Remove Student";
+			cout << left << setw(20) << "h: Help";
+			cout << endl;
 			recognizedInput = true;
 		}
 

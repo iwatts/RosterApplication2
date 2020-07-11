@@ -44,6 +44,9 @@ Student::Student(
 string Student::getStudentID() {
 	return studentID;
 }
+string Student::getStudentEmail() {
+	return emailAddress;
+}
 DegreeProgram Student::getStudentDegree() {
 	return degree;
 }
@@ -51,6 +54,9 @@ DegreeProgram Student::getStudentDegree() {
 //setters
 void Student::setStudentID(string ID) {
 	studentID = ID;
+}
+void Student::setStudentEmail(string email) {
+	emailAddress = email;
 }
 void Student::setStudentDegree(DegreeProgram d) {
 	degree = d;
