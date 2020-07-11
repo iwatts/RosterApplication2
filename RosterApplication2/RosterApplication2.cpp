@@ -45,29 +45,25 @@ int main()
 		}
 
 		if (userInput == "p") {
-			cout << left << setw(5) << "ID";
-			cout << left << setw(15) << "First Name";
-			cout << left << setw(15) << "Last Name";
-			cout << left << setw(30) << "Email";
-			cout << left << setw(5) << "Age";
-			cout << left << setw(10) << "Course 1";
-			cout << left << setw(10) << "Course 2";
-			cout << left << setw(10) << "Course 3";
-			cout << left << setw(10) << "Degree";
-			cout << endl;
 			classRoster->printAll();
 			recognizedInput = true;
 		}
 		if (userInput == "r") {
-			cout << "Enter ID to remove:" << endl;
+			cout << "Enter ID to remove: ";
 			cin >> userInput;
-			// classRoster->remove(userInput);
+			for (i = 0; i < userInput.length(); i++) {
+				if (islower(userInput.at(i))) userInput.at(i) = toupper(userInput.at(i));
+			}
+			if (classRoster->remove(userInput)) classRoster->printAll();
+			else cout << userInput << ": Student ID Not Found" << endl;
 			recognizedInput = true;
 		}
 		if (userInput == "a") {
-			cout << "Student Creation Wizard Goes Here" << endl;
+			cout << "Student Data: ";
 			// generate id, get userinput for the rest
-			// classRoster.addStudent();
+			cin >> userInput;
+			classRoster->parseUserInputAndAdd(userInput);
+			cout << "Student Added" << endl;
 			recognizedInput = true;
 		}
 
@@ -75,5 +71,5 @@ int main()
 			cout << "Input not recognized, please refer to the Commands for valid inputs" << endl;
 		}
 	}
-
+	return 0;
 }

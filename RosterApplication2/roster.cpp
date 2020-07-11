@@ -128,7 +128,29 @@ void Roster::addStudent(
 }
 bool Roster::remove(string studentID) {
 	bool found = false;
+	string confirmationInput = "";
 	cout << "Removing: " << studentID << endl;
+	for (int i = 0; i <= this->lastIndex; i++) {
+		if (this->students[i]->getStudentID() == studentID) {
+			found = true;
+			this->students[i]->print();
+			cout << "Confirm Deletion (Y/N): ";
+			cin >> confirmationInput;
+			for (int y = 0; y < confirmationInput.length(); y++) {
+				if (isupper(confirmationInput.at(y))) confirmationInput.at(y) = tolower(confirmationInput.at(y));
+			}
+			if (confirmationInput == "y") {
+				delete this->students[i];
+				this->students[i] = this->students[lastIndex];
+				lastIndex--;
+				cout << studentID << " Removed" << endl;
+			}
+			else {
+				cout << "Canceled" << endl;
+			}
+		}
+	}
+
 	return found;
 }
 
