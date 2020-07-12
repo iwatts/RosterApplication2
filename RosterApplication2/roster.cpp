@@ -160,7 +160,13 @@ void Roster::printAll() {
 	}
 }
 
-void Roster::printAverageDaysInCourse(string studentID) {}
+void Roster::printAverageDaysInCourse(string studentID) {
+	for (int i = 0; i <= this->lastIndex; i++) {
+		if (this->students[i]->getStudentID() == studentID) {
+			this->students[i]->print();
+		}
+	}
+}
 
 void Roster::printByDegreeProgram(DegreeProgram degreeprogram) {
 	for (int i = 0; i <= this->lastIndex; i++) {
