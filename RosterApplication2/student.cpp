@@ -44,8 +44,17 @@ Student::Student(
 string Student::getStudentID() {
 	return studentID;
 }
+string Student::getStudentFirstName() {
+	return firstName;
+}
+string Student::getStudentLastName() {
+	return lastName;
+}
 string Student::getStudentEmail() {
 	return emailAddress;
+}
+int Student::getStudentAge() {
+	return age;
 }
 DegreeProgram Student::getStudentDegree() {
 	return degree;
