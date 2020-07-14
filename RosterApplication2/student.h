@@ -42,10 +42,10 @@ public:
 
 	//setters
 	void setStudentID(string studentID);
-	void getStudentFirstName(string firstName);
-	void getStudentLastName(string lastName);
+	void setStudentFirstName(string firstName);
+	void setStudentLastName(string lastName);
 	void setStudentEmail(string email);
-	void setStudentEmail(int age);
+	void setStudentAge(int age);
 	void setStudentDegree(DegreeProgram degree);
 
 	void print();

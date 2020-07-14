@@ -64,8 +64,17 @@ DegreeProgram Student::getStudentDegree() {
 void Student::setStudentID(string ID) {
 	studentID = ID;
 }
+void Student::setStudentFirstName(string f) {
+	firstName = f;
+}
+void Student::setStudentLastName(string l) {
+	lastName = l;
+}
 void Student::setStudentEmail(string email) {
 	emailAddress = email;
+}
+void Student::setStudentAge(int a) {
+	age = a;
 }
 void Student::setStudentDegree(DegreeProgram d) {
 	degree = d;
