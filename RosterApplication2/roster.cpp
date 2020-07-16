@@ -83,16 +83,20 @@ void Roster::parseUserInputAndAdd(string userData) {
 			cerr << "ERROR! Invalid Degree Type";
 			exit(-1);
 		}
+		int daysInCourseList[3];
+		daysInCourseList[0] = daysInCourse1;
+		daysInCourseList[1] = daysInCourse1;
+		daysInCourseList[2] = daysInCourse1;
 
+
+		// TODO: Get the days in course into an array
 		addStudent(
 			studentID,
 			firstName,
 			lastName,
 			emailAddress,
 			age,
-			daysInCourse1,
-			daysInCourse2,
-			daysInCourse3,
+			daysInCourseList,
 			degree
 		);
 	}
@@ -108,9 +112,7 @@ void Roster::addStudent(
 	string lastName,
 	string emailAddress,
 	int age,
-	int daysInCourse1,
-	int daysInCourse2,
-	int daysInCourse3,
+	int daysInCourseList[],
 	DegreeProgram degree
 ) {
 	// add the new student to the students array
@@ -120,9 +122,7 @@ void Roster::addStudent(
 		lastName,
 		emailAddress,
 		age,
-		daysInCourse1,
-		daysInCourse2,
-		daysInCourse3,
+		daysInCourseList,
 		degree
 	);
 }

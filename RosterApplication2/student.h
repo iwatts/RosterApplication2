@@ -7,15 +7,15 @@ using namespace std;
 
 class Student
 {
+public:
+	const static int daysInCourseSize = 3;
 private:
 	string studentID;
 	string firstName;
 	string lastName;
 	string emailAddress;
 	int age;
-	int daysInCourse1;
-	int daysInCourse2;
-	int daysInCourse3;
+	int daysInCourseList[daysInCourseSize];
 	DegreeProgram degree;
 
 public:
@@ -26,9 +26,7 @@ public:
 		string lastName,
 		string emailAddress,
 		int age,
-		int daysInCourse1,
-		int daysInCourse2,
-		int daysInCourse3,
+		int daysInCourseList[],
 		DegreeProgram degree
 	);
 
@@ -38,6 +36,7 @@ public:
 	string getStudentLastName();
 	string getStudentEmail();
 	int getStudentAge();
+	int* getStudentDaysInCourse();
 	DegreeProgram getStudentDegree();
 
 	//setters
@@ -46,6 +45,7 @@ public:
 	void setStudentLastName(string lastName);
 	void setStudentEmail(string email);
 	void setStudentAge(int age);
+	void setStudentDaysInCourse(int daysInCourseList[]);
 	void setStudentDegree(DegreeProgram degree);
 
 	void print();

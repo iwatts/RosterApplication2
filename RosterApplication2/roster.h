@@ -28,9 +28,7 @@ public:
 		string lastName,
 		string emailAddress,
 		int age,
-		int daysInCourse1,
-		int daysInCourse2,
-		int daysInCourse3,
+		int daysInCourseList[],
 		DegreeProgram degreeProgram
 	);
 	bool remove(string studentID);

@@ -12,9 +12,7 @@ Student::Student() {
 	this->lastName = "";
 	this->emailAddress = "";
 	this->age = 0;
-	this->daysInCourse1 = 0;
-	this->daysInCourse2 = 0;
-	this->daysInCourse3 = 0;
+	for (int i = 0; i < this->daysInCourseSize; i++) this->daysInCourseList[i] = 0;
 	this->degree = UNDECLARED;
 }
 
@@ -24,9 +22,7 @@ Student::Student(
 	string lastName,
 	string emailAddress,
 	int age,
-	int daysInCourse1,
-	int daysInCourse2,
-	int daysInCourse3,
+	int daysInCourseList[],
 	DegreeProgram degree
 ) {
 	this->studentID = studentID;
@@ -34,9 +30,7 @@ Student::Student(
 	this->lastName = lastName;
 	this->emailAddress = emailAddress;
 	this->age = age;
-	this->daysInCourse1 = daysInCourse1;
-	this->daysInCourse2 = daysInCourse2;
-	this->daysInCourse3 = daysInCourse3;
+	for (int i = 0; i < this->daysInCourseSize; i++) this->daysInCourseList[i] = daysInCourseList[i];
 	this->degree = degree;
 }
 
@@ -55,6 +49,9 @@ string Student::getStudentEmail() {
 }
 int Student::getStudentAge() {
 	return age;
+}
+int* Student::getStudentDaysInCourse() {
+	return daysInCourseList;
 }
 DegreeProgram Student::getStudentDegree() {
 	return degree;
@@ -76,6 +73,9 @@ void Student::setStudentEmail(string email) {
 void Student::setStudentAge(int a) {
 	age = a;
 }
+void Student::setStudentDaysInCourse(int days[]) {
+	for (int i = 0; i < this->daysInCourseSize; i++) this->daysInCourseList[i] = days[i];
+}
 void Student::setStudentDegree(DegreeProgram d) {
 	degree = d;
 }
@@ -85,10 +85,10 @@ void Student::print() {
 	cout << left << setw(15) << firstName;
 	cout << left << setw(15) << lastName;
 	cout << left << setw(30) << emailAddress;
-	cout << left << setw(5) << age;
-	cout << left << setw(10) << daysInCourse1;
-	cout << left << setw(10) << daysInCourse2;
-	cout << left << setw(10) << daysInCourse3;
+	cout << left << setw(8) << age;
+	cout << left << setw(5) << daysInCourseList[0];
+	cout << left << setw(5) << daysInCourseList[1];
+	cout << left << setw(5) << daysInCourseList[2];
 	cout << left << setw(10) << degreeProgramStrings[degree];
 	cout << endl;
 }
