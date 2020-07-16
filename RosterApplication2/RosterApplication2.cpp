@@ -47,13 +47,14 @@ int main()
 		}
 
 		if (userInput == "p") {
-			cout << left << setw(18) << "s: All Students";
+			cout << left << setw(18) << "a: All Students";
 			cout << left << setw(20) << "d: By Degree";
 			cout << left << setw(20) << "e: Invalid Emails";
-			cout << left << setw(20) << "c: Average Course Days";
+			cout << left << setw(25) << "c: Average Course Days";
+			cout << left << setw(20) << "x: Cancel";
 			cout << endl;
 			cin >> userInput;
-			if (userInput == "s") classRoster->printAll();
+			if (userInput == "a") classRoster->printAll();
 			else if (userInput == "d") {
 				cout << "Enter a Degree Type (UNDECLARED/SECURITY/NETWORK/SOFTWARE): ";
 				cin >> userInput;
@@ -72,7 +73,7 @@ int main()
 			}
 			classRoster->printByDegreeProgram(degree);
 			recognizedInput = true;
-			userInput = "h";
+			if (userInput == "x") userInput = "h";
 		}
 		else if (userInput == "r") {
 			cout << "Enter ID to remove: ";
@@ -94,12 +95,11 @@ int main()
 		}
 
 		if (userInput == "h") {
-			cout << "Commands" << endl;
 			cout << left << setw(18) << "q: Quit";
 			cout << left << setw(20) << "p: Print Options";
 			cout << left << setw(20) << "a: Add Student";
 			cout << left << setw(20) << "r: Remove Student";
-			cout << left << setw(20) << "h: Help";
+			cout << left << setw(20) << "h: Commands";
 			cout << endl;
 			recognizedInput = true;
 		}
