@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <regex>
 using namespace std;
 
 #include "roster.h"
@@ -85,8 +86,8 @@ void Roster::parseUserInputAndAdd(string userData) {
 		}
 		int daysInCourseList[3];
 		daysInCourseList[0] = daysInCourse1;
-		daysInCourseList[1] = daysInCourse1;
-		daysInCourseList[2] = daysInCourse1;
+		daysInCourseList[1] = daysInCourse2;
+		daysInCourseList[2] = daysInCourse3;
 
 
 		// TODO: Get the days in course into an array
@@ -161,11 +162,16 @@ void Roster::printAll() {
 }
 
 void Roster::printAverageDaysInCourse(string studentID) {
+	bool found = false;
 	for (int i = 0; i <= this->lastIndex; i++) {
 		if (this->students[i]->getStudentID() == studentID) {
+			found = true;
+			int* days = students[i]->getStudentDaysInCourse();
 			this->students[i]->print();
+			cout << "Average days in course: " << (days[0] + days[1] + days[2]) / 3 << endl;
 		}
 	}
+	if (!found) cout << "Student ID not Found" << endl;
 }
 
 void Roster::printByDegreeProgram(DegreeProgram degreeprogram) {
@@ -176,8 +182,16 @@ void Roster::printByDegreeProgram(DegreeProgram degreeprogram) {
 	}
 }
 void Roster::printInvalidEmails() {
-	cout << "Print invalid emails" << endl;
-	return;
+	bool any = false;
+	cout << "Invalid Emails: " << endl;
+	for (int i = 0; i <= this->lastIndex; i++) {
+		string email = students[i]->getStudentEmail();
+		if (!regex_match(email, regex("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+"))) {
+			any = true;
+			cout << students[i]->getStudentEmail() << endl;
+		}
+	}
+	if (!any) cout << "None" << endl;
 }
 
 

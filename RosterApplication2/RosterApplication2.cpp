@@ -20,7 +20,7 @@ int main()
 		"A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
 		"A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
 		"A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-		"A5,Isaac,Watts,iwatts@wgu.edu,32,30,30,30,SOFTWARE"
+		"A5,Isaac,Watts,iwatts@wgu.edu,32,30,40,50,SOFTWARE"
 	};
 	int studentDataDefaultSize = *(&studentData + 1) - studentData;
 
@@ -29,7 +29,6 @@ int main()
 		classRoster->parseUserInputAndAdd(studentData[i]);
 	}
 	cout << "Loaded" << endl;
-
 
 	cout << "Commands" << endl;
 	cout << left << setw(18) << "q: Quit";
@@ -47,6 +46,7 @@ int main()
 		}
 
 		if (userInput == "p") {
+			recognizedInput = true;
 			cout << left << setw(18) << "a: All Students";
 			cout << left << setw(20) << "d: By Degree";
 			cout << left << setw(20) << "e: Invalid Emails";
@@ -70,9 +70,23 @@ int main()
 					exit(-1);
 				}
 
+				classRoster->printByDegreeProgram(degree);
 			}
-			classRoster->printByDegreeProgram(degree);
-			recognizedInput = true;
+			else if (userInput == "c") {
+				cout << "Enter a Student ID: ";
+				cin >> userInput;
+				for (int y = 0; y < userInput.length(); y++) {
+					if (islower(userInput.at(y))) userInput.at(y) = toupper(userInput.at(y));
+				}
+				classRoster->printAverageDaysInCourse(userInput);
+			}
+			else if (userInput == "e") {
+				classRoster->printInvalidEmails();
+			}
+			else {
+				cout << "Input Not Recognized" << endl;
+				userInput = "x";
+			}
 			if (userInput == "x") userInput = "h";
 		}
 		else if (userInput == "r") {
