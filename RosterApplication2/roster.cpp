@@ -196,5 +196,8 @@ void Roster::printInvalidEmails() {
 
 
 Roster::~Roster() {
-
+	for (int i = 0; i <= this->lastIndex; i++) {
+		delete this->students[i];
+	}
+	delete students;
 }
