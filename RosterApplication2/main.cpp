@@ -34,7 +34,7 @@ int main()
 	}
 
 	cout << "Commands" << endl;
-	cout << left << setw(18) << "q: Quit";
+	cout << left << setw(16) << "q: Quit";
 	cout << left << setw(20) << "p: Print Options";
 	cout << left << setw(20) << "a: Add Student";
 	cout << left << setw(20) << "r: Remove Student";
@@ -89,7 +89,7 @@ int main()
 			else if (userInput == "e") {
 				classRoster->printInvalidEmails();
 			}
-			else {
+			else if (userInput != "x"){
 				cout << "Input Not Recognized" << endl;
 				userInput = "x";
 			}
@@ -118,7 +118,7 @@ int main()
 
 		// print main commands again
 		if (userInput == "h") {
-			cout << left << setw(18) << "q: Quit";
+			cout << left << setw(16) << "q: Quit";
 			cout << left << setw(20) << "p: Print Options";
 			cout << left << setw(20) << "a: Add Student";
 			cout << left << setw(20) << "r: Remove Student";
