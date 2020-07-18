@@ -6,6 +6,7 @@
 
 using namespace std;
 
+//default
 Student::Student() {
 	this->studentID = "";
 	this->firstName = "";
@@ -80,6 +81,7 @@ void Student::setStudentDegree(DegreeProgram d) {
 	degree = d;
 }
 
+//formatted printing so it looks nice-ish
 void Student::print() {
 	cout << left << setw(4) << studentID;
 	cout << left << setw(15) << firstName;

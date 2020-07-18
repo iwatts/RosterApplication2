@@ -84,13 +84,12 @@ void Roster::parseUserInputAndAdd(string userData) {
 			cerr << "ERROR! Invalid Degree Type";
 			exit(-1);
 		}
+		// put the days in course into an array
 		int daysInCourseList[3];
 		daysInCourseList[0] = daysInCourse1;
 		daysInCourseList[1] = daysInCourse2;
 		daysInCourseList[2] = daysInCourse3;
 
-
-		// TODO: Get the days in course into an array
 		addStudent(
 			studentID,
 			firstName,
@@ -116,7 +115,7 @@ void Roster::addStudent(
 	int daysInCourseList[],
 	DegreeProgram degree
 ) {
-	// add the new student to the students array
+	// add the new student to the end of the students array
 	students[lastIndex] = new Student(
 		studentID,
 		firstName,
@@ -127,7 +126,7 @@ void Roster::addStudent(
 		degree
 	);
 }
-bool Roster::remove(string studentID) {
+bool Roster::removeStudent(string studentID) {
 	bool found = false;
 	string confirmationInput = "";
 	cout << "Removing: " << studentID << endl;
@@ -135,12 +134,15 @@ bool Roster::remove(string studentID) {
 		if (this->students[i]->getStudentID() == studentID) {
 			found = true;
 			this->students[i]->print();
+
+			//confirm deletion before removing
 			cout << "Confirm Deletion (Y/N): ";
 			cin >> confirmationInput;
 			for (int y = 0; y < confirmationInput.length(); y++) {
 				if (isupper(confirmationInput.at(y))) confirmationInput.at(y) = tolower(confirmationInput.at(y));
 			}
 			if (confirmationInput == "y") {
+				// only delete if "y"
 				delete this->students[i];
 				this->students[i] = this->students[lastIndex];
 				lastIndex--;
@@ -186,6 +188,7 @@ void Roster::printInvalidEmails() {
 	cout << "Invalid Emails: " << endl;
 	for (int i = 0; i <= this->lastIndex; i++) {
 		string email = students[i]->getStudentEmail();
+		// use regex to check if email matches valid patterns
 		if (!regex_match(email, regex("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+"))) {
 			any = true;
 			cout << students[i]->getStudentEmail() << endl;

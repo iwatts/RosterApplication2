@@ -9,6 +9,11 @@ using namespace std;
 
 int main()
 {
+
+	cout << "Scripting and Programming - Applications - C867" << endl;
+	cout << "Written in C++" << endl;
+	cout << "Isaac Watts - 000993384" << endl;
+
 	string userInput = "";
 	DegreeProgram degree = UNDECLARED;
 	bool recognizedInput;
@@ -24,11 +29,9 @@ int main()
 	};
 	int studentDataDefaultSize = *(&studentData + 1) - studentData;
 
-	cout << "Loading Defaults... [" << studentDataDefaultSize << "]" << endl;
 	for (i = 0; i < studentDataDefaultSize; i++) {
 		classRoster->parseUserInputAndAdd(studentData[i]);
 	}
-	cout << "Loaded" << endl;
 
 	cout << "Commands" << endl;
 	cout << left << setw(18) << "q: Quit";
@@ -39,12 +42,15 @@ int main()
 	cout << endl;
 
 	while (userInput != "q") {
+		//get user input to execute commands
 		cin >> userInput;
 		recognizedInput = false;
+		// set input to lowercase to avoid case sensitive issues
 		for (i = 0; i < userInput.length(); i++) {
 			if (isupper(userInput.at(i))) userInput.at(i) = tolower(userInput.at(i));
 		}
 
+		// print menu/commands
 		if (userInput == "p") {
 			recognizedInput = true;
 			cout << left << setw(18) << "a: All Students";
@@ -89,25 +95,28 @@ int main()
 			}
 			if (userInput == "x") userInput = "h";
 		}
+		// remove student option
 		else if (userInput == "r") {
 			cout << "Enter ID to remove: ";
 			cin >> userInput;
 			for (i = 0; i < userInput.length(); i++) {
 				if (islower(userInput.at(i))) userInput.at(i) = toupper(userInput.at(i));
 			}
-			if (classRoster->remove(userInput)) classRoster->printAll();
+			if (classRoster->removeStudent(userInput)) classRoster->printAll();
 			else cout << userInput << ": Student ID Not Found" << endl;
 			recognizedInput = true;
 		}
+		// add student
 		else if (userInput == "a") {
+			// Expects comma sepearted single line, this could be better
 			cout << "Student Data: ";
-			// generate id, get userinput for the rest
 			cin >> userInput;
 			classRoster->parseUserInputAndAdd(userInput);
 			cout << "Student Added" << endl;
 			recognizedInput = true;
 		}
 
+		// print main commands again
 		if (userInput == "h") {
 			cout << left << setw(18) << "q: Quit";
 			cout << left << setw(20) << "p: Print Options";
@@ -118,6 +127,7 @@ int main()
 			recognizedInput = true;
 		}
 
+		// catch any inputs not recognized and prompt the user
 		if (!recognizedInput && userInput != "q") {
 			cout << "Input not recognized, please refer to the Commands for valid inputs" << endl;
 		}

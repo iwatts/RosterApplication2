@@ -21,6 +21,7 @@ public:
 
 	// parse out the input before adding
 	void parseUserInputAndAdd(string userData);
+
 	// only run on successful parsing
 	void addStudent(
 		string studentID,
@@ -31,7 +32,7 @@ public:
 		int daysInCourseList[],
 		DegreeProgram degreeProgram
 	);
-	bool remove(string studentID);
+	bool removeStudent(string studentID);
 
 	// Printing options
 	void printAll();
