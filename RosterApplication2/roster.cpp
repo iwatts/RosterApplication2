@@ -135,7 +135,8 @@ bool Roster::removeStudent(string studentID) {
 
 			//confirm deletion before removing
 			cout << "Confirm Deletion (Y/N): ";
-			cin >> confirmationInput;
+			// cin >> confirmationInput;
+			confirmationInput = "y";
 			for (int y = 0; y < confirmationInput.length(); y++) {
 				if (isupper(confirmationInput.at(y))) confirmationInput.at(y) = tolower(confirmationInput.at(y));
 			}
@@ -150,6 +151,9 @@ bool Roster::removeStudent(string studentID) {
 				cout << "Canceled" << endl;
 			}
 		}
+	}
+	if (!found) {
+		cout << "Student ID: \"" << studentID << "\" not found" << endl;
 	}
 
 	return found;

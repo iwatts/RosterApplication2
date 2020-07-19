@@ -33,15 +33,41 @@ int main()
 		classRoster->parseUserInputAndAdd(studentData[i]);
 	}
 
+	// Menu User Input controls
+	/*
 	cout << left << setw(16) << "q: Quit";
 	cout << left << setw(20) << "p: Print Options";
 	cout << left << setw(20) << "a: Add Student";
 	cout << left << setw(20) << "r: Remove Student";
 	cout << left << setw(20) << "h: Commands";
 	cout << endl;
+	*/
+	cout << endl;
+	cout << "Print All in Roster:" << endl;
 	classRoster->printAll();
+	cout << endl;
+	cout << "Print Invalid Emails:" << endl;
+	classRoster->printInvalidEmails();
+	cout << endl;
+	cout << "Print each Students average Days in Course:" << endl;
+	for (int i = 0; i < studentDataDefaultSize; i++) {
+		classRoster->printAverageDaysInCourse(classRoster->getStudentAt(i)->getStudentID());
+	}
+	cout << endl;
+	cout << "Print By Degree (Software):" << endl;
+	classRoster->printByDegreeProgram(SOFTWARE);
+	cout << endl;
+	cout << "Removing A3:" << endl;
+	classRoster->removeStudent("A3");
+	cout << endl;
+	cout << "Print Updated Roster:" << endl;
+	classRoster->printAll();
+	cout << endl;
+	cout << "Removing A3 Again:" << endl;
+	classRoster->removeStudent("A3");
 
-	while (true) {
+	// Menu User Input controls
+	/*while (true) {
 		cout << "Enter Command (H=Help): ";
 		cin >> userInput;
 		char formattedInput = toupper(userInput[0]);
@@ -136,7 +162,8 @@ int main()
 			cout << "\"" << formattedInput << "\"";
 			cout << "Input not recognized, please refer to the Commands for valid inputs" << endl;
 		}
-	}
+	}*/
+	system("pause");
 	return 0;
 
 }
