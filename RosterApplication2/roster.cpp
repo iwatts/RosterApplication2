@@ -28,82 +28,80 @@ void Roster::parseUserInputAndAdd(string userData) {
 	int rhs;
 	int lhs;
 
-	if (lastIndex < capacity) {
-		lastIndex++;
-		DegreeProgram degree = UNDECLARED;
-
-		//Get the ID
-		rhs = userData.find(",");
-		string studentID = userData.substr(0, rhs);
-
-		//get firstname
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		string firstName = userData.substr(lhs, rhs - lhs);
-
-		//get lastName
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		string lastName = userData.substr(lhs, rhs - lhs);
-
-		//get emailAddress
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		string emailAddress = userData.substr(lhs, rhs - lhs);
-
-		//get age
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		int age = stoi(userData.substr(lhs, rhs - lhs));
-
-		//get daysInCourse1
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		int daysInCourse1 = stoi(userData.substr(lhs, rhs - lhs));
-
-		//get daysInCourse2
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		int daysInCourse2 = stoi(userData.substr(lhs, rhs - lhs));
-
-		//get daysInCourse3
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		int daysInCourse3 = stoi(userData.substr(lhs, rhs - lhs));
-
-		//get degreeProgram
-		lhs = rhs + 1;
-		rhs = userData.find(",", lhs);
-		string degreeProgramString = userData.substr(lhs, rhs - lhs);
-
-		if (degreeProgramString == "UNDECLARED") degree = UNDECLARED;
-		else if (degreeProgramString == "SECURITY") degree = SECURITY;
-		else if (degreeProgramString == "NETWORK") degree = NETWORK;
-		else if (degreeProgramString == "SOFTWARE")degree = SOFTWARE;
-		else {
-			cerr << "ERROR! Invalid Degree Type";
-			exit(-1);
-		}
-		// put the days in course into an array
-		int daysInCourseList[3];
-		daysInCourseList[0] = daysInCourse1;
-		daysInCourseList[1] = daysInCourse2;
-		daysInCourseList[2] = daysInCourse3;
-
-		addStudent(
-			studentID,
-			firstName,
-			lastName,
-			emailAddress,
-			age,
-			daysInCourseList,
-			degree
-		);
-	}
-	else {
+	if (lastIndex >= capacity) {
 		cerr << "ERROR! Student List is Full";
 		exit(-1);
 	}
+	lastIndex++;
+	DegreeProgram degree = UNDECLARED;
+
+	//Get the ID
+	rhs = userData.find(",");
+	string studentID = userData.substr(0, rhs);
+
+	//get firstname
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	string firstName = userData.substr(lhs, rhs - lhs);
+
+	//get lastName
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	string lastName = userData.substr(lhs, rhs - lhs);
+
+	//get emailAddress
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	string emailAddress = userData.substr(lhs, rhs - lhs);
+
+	//get age
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	int age = stoi(userData.substr(lhs, rhs - lhs));
+
+	//get daysInCourse1
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	int daysInCourse1 = stoi(userData.substr(lhs, rhs - lhs));
+
+	//get daysInCourse2
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	int daysInCourse2 = stoi(userData.substr(lhs, rhs - lhs));
+
+	//get daysInCourse3
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	int daysInCourse3 = stoi(userData.substr(lhs, rhs - lhs));
+
+	//get degreeProgram
+	lhs = rhs + 1;
+	rhs = userData.find(",", lhs);
+	string degreeProgramString = userData.substr(lhs, rhs - lhs);
+
+	if (degreeProgramString == "UNDECLARED") degree = UNDECLARED;
+	else if (degreeProgramString == "SECURITY") degree = SECURITY;
+	else if (degreeProgramString == "NETWORK") degree = NETWORK;
+	else if (degreeProgramString == "SOFTWARE")degree = SOFTWARE;
+	else {
+		cerr << "ERROR! Invalid Degree Type";
+		exit(-1);
+	}
+	// put the days in course into an array
+	int daysInCourseList[3];
+	daysInCourseList[0] = daysInCourse1;
+	daysInCourseList[1] = daysInCourse2;
+	daysInCourseList[2] = daysInCourse3;
+
+	addStudent(
+		studentID,
+		firstName,
+		lastName,
+		emailAddress,
+		age,
+		daysInCourseList,
+		degree
+	);
 }
 
 void Roster::addStudent(

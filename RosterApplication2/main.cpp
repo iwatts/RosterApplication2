@@ -33,26 +33,31 @@ int main()
 		classRoster->parseUserInputAndAdd(studentData[i]);
 	}
 
-	cout << "Commands" << endl;
 	cout << left << setw(16) << "q: Quit";
 	cout << left << setw(20) << "p: Print Options";
 	cout << left << setw(20) << "a: Add Student";
 	cout << left << setw(20) << "r: Remove Student";
 	cout << left << setw(20) << "h: Commands";
 	cout << endl;
+	classRoster->printAll();
 
-	while (userInput != "q") {
-		//get user input to execute commands
+	while (true) {
+		cout << "Enter Command (H=Help): ";
 		cin >> userInput;
-		recognizedInput = false;
-		// set input to lowercase to avoid case sensitive issues
-		for (i = 0; i < userInput.length(); i++) {
-			if (isupper(userInput.at(i))) userInput.at(i) = tolower(userInput.at(i));
-		}
+		char formattedInput = toupper(userInput[0]);
 
-		// print menu/commands
-		if (userInput == "p") {
-			recognizedInput = true;
+		switch (formattedInput) {
+		case 'H':
+			cout << left << setw(16) << "q: Quit";
+			cout << left << setw(20) << "p: Print Options";
+			cout << left << setw(20) << "a: Add Student";
+			cout << left << setw(20) << "r: Remove Student";
+			cout << left << setw(20) << "h: Commands";
+			cout << endl;
+			break;
+		case 'Q':
+			return 0;
+		case 'P':
 			cout << left << setw(18) << "a: All Students";
 			cout << left << setw(20) << "d: By Degree";
 			cout << left << setw(20) << "e: Invalid Emails";
@@ -60,77 +65,78 @@ int main()
 			cout << left << setw(20) << "x: Cancel";
 			cout << endl;
 			cin >> userInput;
-			if (userInput == "a") classRoster->printAll();
-			else if (userInput == "d") {
-				cout << "Enter a Degree Type (UNDECLARED/SECURITY/NETWORK/SOFTWARE): ";
-				cin >> userInput;
-				for (int y = 0; y < userInput.length(); y++) {
-					if (islower(userInput.at(y))) userInput.at(y) = toupper(userInput.at(y));
-				}
-				if (userInput == "UNDECLARED") degree = UNDECLARED;
-				else if (userInput == "SECURITY") degree = SECURITY;
-				else if (userInput == "NETWORK") degree = NETWORK;
-				else if (userInput == "SOFTWARE")degree = SOFTWARE;
-				else {
-					cerr << "ERROR! Invalid Degree Type";
-					exit(-1);
-				}
 
-				classRoster->printByDegreeProgram(degree);
-			}
-			else if (userInput == "c") {
+			switch (toupper((char)userInput.substr(0, 1).c_str())) {
+			case 'A':
+				classRoster->printAll();
+				break;
+			case 'D':
+				cout << "Enter a Degree Type" << endl;
+				cout << "  1=UNDECLARED" << endl;
+				cout << "  2=SECURITY" << endl;
+				cout << "  3=NETWORK" << endl;
+				cout << "  4=SOFTWARE" << endl;
+				cout << "Enter choice (q=quit): ";
+				cin >> userInput;
+				switch (toupper((char)userInput.substr(0, 1).c_str())) {
+				case '1':
+					classRoster->printByDegreeProgram(UNDECLARED);
+					break;
+				case '2':
+					classRoster->printByDegreeProgram(SECURITY);
+					break;
+				case '3':
+					classRoster->printByDegreeProgram(NETWORK);
+					break;
+				case '4':
+					classRoster->printByDegreeProgram(SOFTWARE);
+					break;
+				default:
+					break;
+				}
+				break;
+			case 'C':
 				cout << "Enter a Student ID: ";
 				cin >> userInput;
 				for (int y = 0; y < userInput.length(); y++) {
 					if (islower(userInput.at(y))) userInput.at(y) = toupper(userInput.at(y));
 				}
 				classRoster->printAverageDaysInCourse(userInput);
-			}
-			else if (userInput == "e") {
+				break;
+			case 'E':
 				classRoster->printInvalidEmails();
+				break;
+			default:
+				break;
 			}
-			else if (userInput != "x"){
-				cout << "Input Not Recognized" << endl;
-				userInput = "x";
-			}
-			if (userInput == "x") userInput = "h";
-		}
-		// remove student option
-		else if (userInput == "r") {
+			break;
+		case 'R':
+			// remove student option
 			cout << "Enter ID to remove: ";
 			cin >> userInput;
 			for (i = 0; i < userInput.length(); i++) {
 				if (islower(userInput.at(i))) userInput.at(i) = toupper(userInput.at(i));
 			}
-			if (classRoster->removeStudent(userInput)) classRoster->printAll();
-			else cout << userInput << ": Student ID Not Found" << endl;
-			recognizedInput = true;
-		}
-		// add student
-		else if (userInput == "a") {
-			// Expects comma sepearted single line, this could be better
+			if (classRoster->removeStudent(userInput)) {
+				classRoster->printAll();
+			}
+			else {
+				cout << userInput << ": Student ID Not Found" << endl;
+			}
+			break;
+		case 'A':
+			// add student
+			// Expects comma separated single line, this could be better
 			cout << "Student Data: ";
 			cin >> userInput;
 			classRoster->parseUserInputAndAdd(userInput);
 			cout << "Student Added" << endl;
-			recognizedInput = true;
-		}
-
-		// print main commands again
-		if (userInput == "h") {
-			cout << left << setw(16) << "q: Quit";
-			cout << left << setw(20) << "p: Print Options";
-			cout << left << setw(20) << "a: Add Student";
-			cout << left << setw(20) << "r: Remove Student";
-			cout << left << setw(20) << "h: Commands";
-			cout << endl;
-			recognizedInput = true;
-		}
-
-		// catch any inputs not recognized and prompt the user
-		if (!recognizedInput && userInput != "q") {
+			break;
+		default:
+			cout << "\"" << formattedInput << "\"";
 			cout << "Input not recognized, please refer to the Commands for valid inputs" << endl;
 		}
 	}
 	return 0;
+
 }
